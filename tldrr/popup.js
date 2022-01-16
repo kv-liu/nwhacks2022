@@ -22,36 +22,73 @@ function fetchReadingList() {
       // entry.appendChild(document.createTextNode(items[key]));
 
       var div1 = document.createElement('div')
-      div1.setAttribute('class', 'flex flex-wrap ml-3 items-center')
+      div1.setAttribute('class', 'flex ml-3 items-center')
 
       var img = document.createElement('img');
       img.src = './images/reddit-logo-512x512.png';
-      img.setAttribute('class', 'h-7 w-7')
+      img.setAttribute('class', 'h-7 w-7');
 
-      var div2 = document.createElement('div')
-      div2.setAttribute('class', 'ml-3')
+      var div2 = document.createElement('div');
+      div2.setAttribute('class', 'ml-3');
 
-      var p1 = document.createElement('p')
-      var p2 = document.createElement('p')
-      p1.setAttribute('class', 'font-medium text-gray-100')
-      p2.setAttribute('class', 'text-gray-300')
+      var p1 = document.createElement('p');
+      var p2 = document.createElement('p');
+      p1.setAttribute('class', 'font-medium text-gray-100');
+      p2.setAttribute('class', 'text-gray-300');
       p1.innerText = title
       p2.innerText = link
 
+
+      var form = document.createElement('form');
+      form.setAttribute('class', 'h-3 w-3 mr-3 ml-auto');
+
+      var btn = document.createElement('button');
+      btn.setAttribute('id', 'delBtn');
+      btn.setAttribute('style', 'filter:brightness(0) invert(1);');
+
+      var img2 = document.createElement('img');
+      img2.src = '/images/x.png';
+      
 
       aTag.appendChild(liTag);
       liTag.appendChild(div1);
       div1.appendChild(img);
       div1.appendChild(div2);
+      div1.appendChild(form);
+      form.appendChild(btn)
+      btn.appendChild(img2);
       div2.appendChild(p1);
       div2.appendChild(p2);
       list.appendChild(aTag);
     }
-
   })
 }
 
 fetchReadingList()
+
+document.getElementById('delBtn').addEventListener("click", removeEntry);
+
+document.getElementById('clearBtn').addEventListener("click", clearList);
+
+
+function clearList() {
+  console.log("Clearing storage....");
+  chrome.storage.local.clear()
+  fetchReadingList()
+}
+
+
+function removeEntry() {
+
+  chrome.storage.local.remove()
+  // chrome.storage.local.remove(["Key1","key2"],function(){
+  //   var error = chrome.runtime.lastError;
+  //      if (error) {
+  //          console.error(error);
+  //      }
+  //  })
+}
+
 
 
 
@@ -63,6 +100,12 @@ fetchReadingList()
       <p class="font-medium text-gray-100">This is the title.</p>
       <p class="text-gray-300">This is the URL.</p>
     </div>
+
+    <form class='h-3 w-3 mr-3 ml-auto'>
+      <button id='delBtn' style='filter:brightness(0) invert(1);'>
+        <img src='./images/x.png'>
+      </button>
+    </form>
   </div>
 </li>
 </a> */}

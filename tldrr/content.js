@@ -36,12 +36,12 @@ function handleButtonClick(composite1, button, title) {
 
                 var url = window.location.href
 
-                if (title.length > 60) {
-                    title = title.substring(0, 60) + "..."
+                if (title.length > 50) {
+                    title = title.substring(0, 50) + "..."
                 }
 
-                if (url.length > 60) {
-                    url = url.substring(0, 60) + "..."
+                if (url.length > 50) {
+                    url = url.substring(0, 50) + "..."
                 }
 
                 readingListItem["title"] = title
@@ -59,6 +59,8 @@ function handleButtonClick(composite1, button, title) {
         })
         });
 }
+
+
 
 
 // check if current post has TLDR
