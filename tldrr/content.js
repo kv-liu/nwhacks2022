@@ -8,7 +8,6 @@ const tldr = ['TLDR', 'TL;DR', 'TLDR;', 'TL; DR', ';TLDR', 'TLDR:', 'TL;DR:']
 const AWS_API = 'https://bhny93bzji.execute-api.us-west-1.amazonaws.com/summarize'
 var text;
 
-
 createLocalStorageIfNotExist()
 printLocalStorage()
 

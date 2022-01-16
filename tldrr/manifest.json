@@ -9,7 +9,7 @@
   "permissions": ["storage", "activeTab", "scripting"],
   "content_scripts": [
     {
-      "matches": ["https://*/*"],
+      "matches": ["https://*/r/*/comments/*"],
       "css": ["content.css"],
       "js": ["content.js"]
     }
