@@ -60,14 +60,18 @@ function summarizePost(currentUrl) {
         },
         body: JSON.stringify(payload)
       }).then(response => response.json()).then(data => {
+        var newLine1 = document.createElement("br");
+        var newLine2 = document.createElement("br");
         var node = document.createElement("p")
         var button = document.createElement("button")
-        var t = document.createTextNode("Add to reading list");
+        var t = document.createTextNode("Add to TLDRR List");
         button.setAttribute('id', subredditId + '-' + postId + '-' + 'reading-list-button')
         button.appendChild(t)
+        button.setAttribute('style', 'padding-left: 4px; padding-right:4px; padding-top:3px; padding-bottom:3px; border-radius: 6px; background-color: #79A9D1; color:white');
+        node.setAttribute('style', 'padding-left: 4px; padding-right:4px; padding-top:3px; padding-bottom:3px; border-radius:6px; background-color: #79A9D1; color:white');
         node.innerText = "TLDR: " + data.choices[0].text
-        node.style.backgroundColor = 'lightblue';
-        node.style.color = 'black';
+        // node.style.backgroundColor = '#FF5700';
+        // node.style.color = 'black';
 
         var tags = document.getElementsByTagName("p")
         const slice = text.substring(0, 10)
@@ -80,7 +84,10 @@ function summarizePost(currentUrl) {
           }
         }
 
+        
+        parent.appendChild(newLine1)
         parent.appendChild(node)
+        parent.appendChild(newLine2)
         parent.appendChild(button)
         renderReadingListButton(compositeId, button)
         handleButtonClick(compositeId, button, title)

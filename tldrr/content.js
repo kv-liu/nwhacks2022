@@ -16,7 +16,7 @@ function renderReadingListButton(compositeId, button) {
         if(res.tldrReadingList.filter(e => e.compositeKey === compositeId).length > 0) {
             console.log("current page in reading list")
             button.disabled = true;
-            button.innerText = "Added!"
+            button.innerText = "Already Added!"
         }
     })
   }
