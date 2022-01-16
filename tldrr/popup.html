@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <link rel="stylesheet" href="button.css">
-  </head>
-  <body>
-    <button id="changeColor"></button>
-    <script src="popup.js"></script>
-  </body>
+
+<head>
+  <title>TL;DRR</title>
+  <!--<link rel="stylesheet" href="button.css">-->
+  <!-- <link rel="stylesheet" href="popup.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+    integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Nunito&family=Roboto:wght@300&display=swap"
+    rel="stylesheet">
+  <script src="popup.js" defer></script>
+</head>
+
+<body class="antialiased">
+  <div class="w-72 p-4 bg-gray-900">
+    <h1 class='font-semibold text-lg text-gray-100'>
+      Reading List
+    </h1>
+
+    <div class="mx-auto mt-2">
+      <ul class="divide-y divide-gray-700">
+        <a href="#">
+          <li class="py-4 flex items-center">
+            <img src="./images/reddit-logo-16_16x16.png" class="h-6 w-6 rounded-full">
+            <div class="ml-3">
+              <p class="font-medium text-gray-100">This is the title.</p>
+              <p class="text-gray-300">This is the URL.</p>
+            </div>
+          </li>
+        </a>
+
+        <li class="py-4 flex">
+          <img src="./images/reddit-logo-16_16x16.png" class="h-6 w-6 rounded-full">
+          <div class="ml-3">
+            <p class="font-medium text-gray-100">This is the title.</p>
+            <p class="text-gray-300">This is the URL.</p>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</body>
+
 </html>
