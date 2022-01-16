@@ -1,3 +1,8 @@
+
+fetchReadingList()
+document.getElementById('delBtn').addEventListener("click", removeEntry);
+document.getElementById('clearBtn').addEventListener("click", clearList);
+
 function fetchReadingList() {
   console.log("fetching reading list...")
   chrome.storage.local.get(['tldrReadingList'], function(res) {
@@ -65,10 +70,6 @@ function fetchReadingList() {
   })
 }
 
-// fetchReadingList()
-
-document.getElementById('delBtn').addEventListener("click", function(){ removeEntry(this); });
-document.getElementById('clearBtn').addEventListener("click", clearList);
 
 
 function clearList() {
@@ -79,46 +80,13 @@ function clearList() {
 
 
 function removeEntry(el) {
-  console.log("Removing Entry...");
-  var id = el.parentElement.parentElement.parentElement.parentElement.id;
-  alert(id);
-
-  var toRemove = document.getElementById(id);
-  alert(toRemove.id);
-  toRemove.remove();
-
-  // chrome.storage.local.get(id, function (readingListItem) {
-  //   alert("removed");
-  // });
-
-  
-
-  // chrome.storage.local.get(null, function (res) {
-  //   for (var key in res) {
-  //       if (key == compositeKey) { // or key.includes or whatever
-  //         chrome.storage.local.remove(id)
-  //       }
-  //   }
-// })
-
-//   chrome.storage.local.remove([])
-
-  //remove from storage now (fetchReadingList is rerendering negating the deletion since its not deleted in storage)
-
-  // var name = el.parentElement.parentElement.parentElement.nodeName;
-  // console.log(name);
-
-  // chrome.storage.local.remove()
-  // chrome.storage.local.remove(["Key1","key2"],function(){
-  //   var error = chrome.runtime.lastError;
-  //      if (error) {
-  //          console.error(error);
-  //      }
-  //  })
+  var listItemId = el.parentElement.parentElement.parentElement.parentElement.id
+  chrome.storage.local.get(function(res) {
+    var filtered = res.tldrReadingList.filter(e => e.compositeKey != listItemId)
+    chrome.storage.local.set({ 'tldrReadingList': filtered })
+    fetchReadingList()
+  })
 }
-
-
-
 
 {/* <a href="https://www.google.com" target='_blank'>
 <li class="py-4 hover:bg-gray-800">
