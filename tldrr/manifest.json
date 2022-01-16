@@ -6,12 +6,26 @@
   "background": {
     "service_worker": "background.js"
   },
-  "permissions": ["storage", "activeTab", "scripting"],
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "scripting"
+  ],
+  "host_permissions": [
+    "https://*.reddit.com/*comments*"
+  ],
   "content_scripts": [
     {
-      "matches": ["https://*/*"],
-      "css": ["content.css"],
-      "js": ["content.js"]
+      "matches": [
+        "https://*.reddit.com/*comments*"
+      ],
+      "css": [
+        "content.css"
+      ],
+      "js": [
+        "content.js"
+      ]
     }
   ],
   "action": {
