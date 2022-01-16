@@ -18,17 +18,18 @@ function fetchReadingList() {
 
 
       var liTag = document.createElement('li');
+      liTag.setAttribute('class', 'py-4 hover:bg-gray-800')
       // entry.appendChild(document.createTextNode(items[key]));
 
       var div1 = document.createElement('div')
       div1.setAttribute('class', 'flex flex-wrap ml-3 items-center')
-  
+
       var img = document.createElement('img');
       img.src = './images/reddit-logo-512x512.png';
       img.setAttribute('class', 'h-7 w-7')
-  
+
       var div2 = document.createElement('div')
-      div2.setAttribute('class', 'ml-5')
+      div2.setAttribute('class', 'ml-3')
 
       var p1 = document.createElement('p')
       var p2 = document.createElement('p')
@@ -37,7 +38,7 @@ function fetchReadingList() {
       p1.innerText = title
       p2.innerText = link
 
-      
+
       aTag.appendChild(liTag);
       liTag.appendChild(div1);
       div1.appendChild(img);

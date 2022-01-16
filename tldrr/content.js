@@ -33,8 +33,21 @@ function handleButtonClick(composite1, button, title) {
                 console.log("did not find it")
                 var readingListItem = {}
                 readingListItem["compositeKey"] = composite1
+
+                var url = window.location.href
+
+                if (title.length > 60) {
+                    title = title.substring(0, 60) + "..."
+                }
+
+                if (url.length > 60) {
+                    url = url.substring(0, 60) + "..."
+                }
+
                 readingListItem["title"] = title
-                readingListItem["url"] = window.location.href
+                readingListItem["url"] = url
+
+
                 res.tldrReadingList.push(readingListItem)
                 chrome.storage.local.set({ 'tldrReadingList': res.tldrReadingList}, function() {
                     console.log(`Adding ${composite1} page to Local Storage`);
@@ -42,7 +55,7 @@ function handleButtonClick(composite1, button, title) {
                     button.innerText = "Added!"
                     });
             }
-            
+
         })
         });
 }
