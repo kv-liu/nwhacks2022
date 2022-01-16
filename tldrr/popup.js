@@ -1,3 +1,8 @@
+
+fetchReadingList()
+document.getElementById('delBtn').addEventListener("click", removeEntry);
+document.getElementById('clearBtn').addEventListener("click", clearList);
+
 function fetchReadingList() {
   console.log("fetching reading list...")
   chrome.storage.local.get(['tldrReadingList'], function(res) {
@@ -64,11 +69,7 @@ function fetchReadingList() {
   })
 }
 
-fetchReadingList()
 
-document.getElementById('delBtn').addEventListener("click", removeEntry);
-
-document.getElementById('clearBtn').addEventListener("click", clearList);
 
 
 function clearList() {
@@ -78,19 +79,14 @@ function clearList() {
 }
 
 
-function removeEntry() {
-
-  chrome.storage.local.remove()
-  // chrome.storage.local.remove(["Key1","key2"],function(){
-  //   var error = chrome.runtime.lastError;
-  //      if (error) {
-  //          console.error(error);
-  //      }
-  //  })
+function removeEntry(el) {
+  var listItemId = el.parentElement.parentElement.parentElement.parentElement.id
+  chrome.storage.local.get(function(res) {
+    var filtered = res.tldrReadingList.filter(e => e.compositeKey != listItemId)
+    chrome.storage.local.set({ 'tldrReadingList': filtered })
+    fetchReadingList()
+  })
 }
-
-
-
 
 {/* <a href="https://www.google.com" target='_blank'>
 <li class="py-4 hover:bg-gray-800">
