@@ -4,9 +4,12 @@ var t = document.createTextNode("CLICK ME");
 btn.appendChild(t);
 //Appending to DOM 
 document.body.appendChild(btn);
-
-document.getElementById("button-id-1").addEventListener("click", function() {
-    chrome.storage.local.set({ 'foo': '1' }, function() {
-        console.log("set storage")
+var i = 1
+document.getElementById("button-id-1").addEventListener("click", function() {  
+    chrome.storage.local.set({'button': i++}, function(result) {
+        console.log("set storage" + result)
     })
+    chrome.storage.local.get(['button'], function(result) {
+        console.log('The buttons state is currently ' + result.button);
+      });
   });
