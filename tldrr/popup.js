@@ -7,9 +7,10 @@ function fetchReadingList() {
     list.innerHTML = ''
 
     for( var key in items) {
-      console.log(key, items[key])
-      var title = items[key][0]
-      var link = items[key][1]
+      readingListItem = items[key]
+      console.log(readingListItem)
+      var title = readingListItem.title
+      var link = readingListItem.url
 
       var aTag = document.createElement("a");
       aTag.setAttribute('href', link); //URL
