@@ -28,10 +28,12 @@ function summarizePost(currentUrl) {
   const AWS_API = 'https://bhny93bzji.execute-api.us-west-1.amazonaws.com/summarize'
 
   var text;
+  var title;
 
   fetch(currentUrl + '.json')
     .then(response => response.json())
     .then(data => {
+      title = data[0].data.children[0].data.title
       text = data[0].data.children[0].data.selftext
 
       const subredditId = data[0].data.children[0].data.subreddit_id
@@ -81,8 +83,13 @@ function summarizePost(currentUrl) {
         parent.appendChild(node)
         parent.appendChild(button)
         renderReadingListButton(compositeId, button)
-        handleButtonClick(compositeId, button)
+        handleButtonClick(compositeId, button, title)
 
       }).catch((err) => console.log(err))
     });
 }
+
+
+
+
+
