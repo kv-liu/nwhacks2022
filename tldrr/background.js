@@ -84,7 +84,6 @@ function summarizePost(currentUrl) {
           }
         }
 
-        
         parent.appendChild(newLine1)
         parent.appendChild(node)
         parent.appendChild(newLine2)

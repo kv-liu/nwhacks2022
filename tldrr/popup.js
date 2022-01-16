@@ -15,6 +15,7 @@ function fetchReadingList() {
       var aTag = document.createElement("a");
       aTag.setAttribute('href', link); //URL
       aTag.setAttribute('target', '_blank'); //URL
+      aTag.setAttribute('id', readingListItem.compositeKey);
 
 
       var liTag = document.createElement('li');
@@ -64,10 +65,9 @@ function fetchReadingList() {
   })
 }
 
-fetchReadingList()
+// fetchReadingList()
 
-document.getElementById('delBtn').addEventListener("click", removeEntry);
-
+document.getElementById('delBtn').addEventListener("click", function(){ removeEntry(this); });
 document.getElementById('clearBtn').addEventListener("click", clearList);
 
 
@@ -78,9 +78,37 @@ function clearList() {
 }
 
 
-function removeEntry() {
+function removeEntry(el) {
+  console.log("Removing Entry...");
+  var id = el.parentElement.parentElement.parentElement.parentElement.id;
+  alert(id);
 
-  chrome.storage.local.remove()
+  var toRemove = document.getElementById(id);
+  alert(toRemove.id);
+  toRemove.remove();
+
+  // chrome.storage.local.get(id, function (readingListItem) {
+  //   alert("removed");
+  // });
+
+  
+
+  // chrome.storage.local.get(null, function (res) {
+  //   for (var key in res) {
+  //       if (key == compositeKey) { // or key.includes or whatever
+  //         chrome.storage.local.remove(id)
+  //       }
+  //   }
+// })
+
+//   chrome.storage.local.remove([])
+
+  //remove from storage now (fetchReadingList is rerendering negating the deletion since its not deleted in storage)
+
+  // var name = el.parentElement.parentElement.parentElement.nodeName;
+  // console.log(name);
+
+  // chrome.storage.local.remove()
   // chrome.storage.local.remove(["Key1","key2"],function(){
   //   var error = chrome.runtime.lastError;
   //      if (error) {

@@ -25,9 +25,9 @@
     </h1>
 
     <div class="mx-auto mt-2">
-      <ul class="divide-y divide-gray-700">
+      <ul class="flex items-center divide-y divide-gray-700 hover:bg-gray-800">
 
-          <a href="https://www.google.com" target='_blank'>
+          <a href="#" target='_blank' id='test-id' style='display:inline-block; width: 350px;'>
             <li class="py-4 hover:bg-gray-800">
               <div class="flex ml-3 items-center">
                 <img src="./images/reddit-logo-512x512.png" class="h-7 w-7">
@@ -35,14 +35,16 @@
                   <p class="font-medium text-gray-100">This is the title.</p>
                   <p class="text-gray-300">This is the URL.</p>
                 </div>
-                <form class='h-3 w-3 mr-3 ml-auto'>
-                  <button id='delBtn' style='filter:brightness(0) invert(1);'>
-                    <img src='./images/x.png'>
-                  </button>
-                </form>
               </div>
             </li>
           </a>
+
+            <button class='h-3 w-3 mr-3 ml-auto items-center' type='button' id='delBtn' style='border:none; filter:brightness(0) invert(1); display:inline-block;'>
+              <img src='./images/x.png'>
+            </button>
+
+
+
 
       </ul>
     </div>
